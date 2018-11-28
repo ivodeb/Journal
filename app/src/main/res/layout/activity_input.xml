@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="20"
+    android:orientation="vertical"
+    tools:context=".InputActivity">
+
+    <EditText
+        android:id="@+id/editTitleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editEntryText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <ImageView
+            android:id="@+id/moodHappy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="happyMood"
+            android:padding="8dp"
+            app:srcCompat="@drawable/happy" />
+
+        <ImageView
+            android:id="@+id/moodTired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="tiredMood"
+            android:padding="8dp"
+            app:srcCompat="@drawable/tired" />
+
+        <ImageView
+            android:id="@+id/moodCrying"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="cryingMood"
+            android:padding="8dp"
+            app:srcCompat="@drawable/crying" />
+
+        <ImageView
+            android:id="@+id/moodAngry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="angryMood"
+            android:padding="8dp"
+            app:srcCompat="@drawable/angry" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:onClick="addEntry"
+        android:text="submit" />
+</LinearLayout>
