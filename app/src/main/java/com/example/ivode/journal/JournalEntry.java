@@ -56,12 +56,4 @@ public class JournalEntry implements Serializable {
     public void setContent(String content) {
         this.content = content;
     }
-
-    public void setMood(Mood mood) {
-        this.mood = mood;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
 }

@@ -13,6 +13,7 @@ public class EntryDatabase extends SQLiteOpenHelper {
 
     private static EntryDatabase instance;
 
+    // constructor
     private EntryDatabase(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -27,10 +28,14 @@ public class EntryDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+
         sqLiteDatabase.execSQL("create table " + DBNAME + "( _id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                 "title TEXT NOT NULL, content TEXT NOT NULL, mood TEXT NOT NULL, " +
                 "timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP);");
 
+        // add some sample to database
+        sqLiteDatabase.execSQL("INSERT INTO " + DBNAME + "(title, content, mood) VALUES " +
+                "('day_one', 'Blablabla', 'HAPPY')");
     }
 
     @Override
@@ -39,11 +44,13 @@ public class EntryDatabase extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
+    // method to select all database entries
     public Cursor selectAll() {
         SQLiteDatabase db = getWritableDatabase();
         return db.rawQuery("SELECT * FROM "+ DBNAME, null);
     }
 
+    // method to insert an entry
     public void insert(JournalEntry entry) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();

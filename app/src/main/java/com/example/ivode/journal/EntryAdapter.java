@@ -12,8 +12,9 @@ import java.sql.Timestamp;
 public class EntryAdapter extends ResourceCursorAdapter {
 
     public EntryAdapter(Context context, Cursor c) {
-        super(context, R.layout.entry_row, c);
+        super(context, R.layout.entry_row, c, false);
     }
+
 
     @Override
     public Object getItem(int position) {
@@ -28,6 +29,7 @@ public class EntryAdapter extends ResourceCursorAdapter {
 
         return new JournalEntry(id,title,content,mood,timestamp);
     }
+
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
