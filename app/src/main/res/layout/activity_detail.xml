@@ -12,6 +12,9 @@
         android:layout_width="501dp"
         android:layout_height="wrap_content"
         android:layout_weight="0"
+        android:fontFamily="@font/journal"
+        android:textSize="48sp"
+        android:padding="8dp"
         android:text="Title" />
 
     <TextView
@@ -19,6 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
+        android:fontFamily="@font/journal"
+        android:textSize="36sp"
+        android:padding="8dp"
         android:text="Date" />
 
     <ImageView
@@ -36,5 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/journal"
+        android:textSize="24sp"
+        android:padding="8dp"
         android:text="text entry" />
 </LinearLayout>

@@ -3,12 +3,10 @@ package com.example.ivode.journal;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.Timestamp;
 
@@ -50,8 +48,15 @@ public class MainActivity extends AppCompatActivity {
     private class OnItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            JournalEntry entry = (JournalEntry) adapterView.getItemAtPosition(i);
             Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+
+            Cursor cursor = (Cursor) adapterView.getItemAtPosition(i);
+            String title = cursor.getString(cursor.getColumnIndex("title"));
+            String content = cursor.getString(cursor.getColumnIndex("content"));
+            Mood mood = Mood.valueOf(cursor.getString(cursor.getColumnIndex("mood")));
+            Timestamp timestamp = Timestamp.valueOf(cursor.getString(cursor.getColumnIndex("timestamp")));
+            JournalEntry entry = new JournalEntry(title, content, mood, timestamp);
+
             intent.putExtra("entryJournal", entry);
             startActivity(intent);
         }
@@ -60,12 +65,13 @@ public class MainActivity extends AppCompatActivity {
     private class OnItemLongClickListener implements AdapterView.OnItemLongClickListener {
         @Override
         public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Cursor cursor = (Cursor) adapterView.getItemAtPosition(i);
-            long id = cursor.getLong(cursor.getColumnIndex("_id"));
             EntryDatabase db = EntryDatabase.getInstance(getApplicationContext());
+            Cursor cursor = (Cursor) adapterView.getItemAtPosition(i);
+            long id = cursor.getInt(cursor.getColumnIndex("_id"));
+
             db.deleteEntry(id);
             updateData();
-            return true;
+            return false;
         }
     }
 }

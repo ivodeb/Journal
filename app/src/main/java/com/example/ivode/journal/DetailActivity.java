@@ -3,13 +3,8 @@ package com.example.ivode.journal;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.util.Log;
-
-import org.w3c.dom.Text;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -26,15 +21,10 @@ public class DetailActivity extends AppCompatActivity {
         TextView entryText = findViewById(R.id.journalEntry);
         ImageView moodImage = findViewById(R.id.journalMood);
 
-        try {
-            title.setText(entry.getTitle());
-            timestamp.setText(entry.getTimestamp().toString());
-            entryText.setText(entry.getContent());
-            Mood mood = entry.getMood();
-            moodImage.setImageResource(mood.getMoodImage());
-        }
-        catch (Exception e) {
-            Log.e("error", "could not load content");
-        }
+        title.setText(entry.getTitle());
+        timestamp.setText(entry.getTimestamp().toString().substring(0, 19));
+        entryText.setText(entry.getContent());
+        Mood mood = entry.getMood();
+        moodImage.setImageResource(mood.getMoodImage());
     }
 }

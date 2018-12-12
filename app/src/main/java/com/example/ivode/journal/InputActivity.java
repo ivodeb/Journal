@@ -1,7 +1,5 @@
 package com.example.ivode.journal;
 
-import android.database.sqlite.SQLiteDatabase;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,9 +26,7 @@ public class InputActivity extends AppCompatActivity {
 
         String title = titleText.getText().toString();
         String content = entryText.getText().toString();
-
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-
         JournalEntry entry = new JournalEntry(title, content, moodSelected, timestamp);
 
         db.insert(entry);
@@ -39,16 +35,51 @@ public class InputActivity extends AppCompatActivity {
     }
 
     public void happyMood(View v) {
+        ImageView happy = findViewById(R.id.moodHappy);
+        ImageView crying = findViewById(R.id.moodCrying);
+        ImageView tired = findViewById(R.id.moodTired);
+        ImageView angry = findViewById(R.id.moodAngry);
+
         moodSelected = Mood.HAPPY;
+        happy.setImageResource(R.drawable.happy_selected);
+        crying.setImageResource(R.drawable.crying);
+        tired.setImageResource(R.drawable.tired);
+        angry.setImageResource(R.drawable.angry);
     }
     public void cryingMood(View v) {
+        ImageView happy = findViewById(R.id.moodHappy);
+        ImageView crying = findViewById(R.id.moodCrying);
+        ImageView tired = findViewById(R.id.moodTired);
+        ImageView angry = findViewById(R.id.moodAngry);
+
         moodSelected = Mood.CRYING;
+        crying.setImageResource(R.drawable.crying_selected);
+        happy.setImageResource(R.drawable.happy);
+        tired.setImageResource(R.drawable.tired);
+        angry.setImageResource(R.drawable.angry);
     }
     public void tiredMood(View v) {
+        ImageView happy = findViewById(R.id.moodHappy);
+        ImageView crying = findViewById(R.id.moodCrying);
+        ImageView tired = findViewById(R.id.moodTired);
+        ImageView angry = findViewById(R.id.moodAngry);
+
         moodSelected = Mood.TIRED;
+        tired.setImageResource(R.drawable.tired_selected);
+        happy.setImageResource(R.drawable.happy);
+        crying.setImageResource(R.drawable.crying);
+        angry.setImageResource(R.drawable.angry);
     }
     public void angryMood(View v) {
-        moodSelected = Mood.ANGRY;
-    }
+        ImageView happy = findViewById(R.id.moodHappy);
+        ImageView crying = findViewById(R.id.moodCrying);
+        ImageView tired = findViewById(R.id.moodTired);
+        ImageView angry = findViewById(R.id.moodAngry);
 
+        moodSelected = Mood.ANGRY;
+        angry.setImageResource(R.drawable.angry_selected);
+        happy.setImageResource(R.drawable.happy);
+        crying.setImageResource(R.drawable.crying);
+        tired.setImageResource(R.drawable.tired);
+    }
 }
