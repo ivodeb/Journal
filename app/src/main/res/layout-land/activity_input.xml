@@ -12,24 +12,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
+        android:padding="16dp"
         android:hint="Title"/>
 
     <EditText
         android:id="@+id/edit_entry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ems="10"
         android:inputType="textMultiLine"
+        android:padding="16dp"
         android:hint="Content"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
+        android:padding="4dp"
         android:weightSum="4">
 
         <ImageView
             android:id="@+id/happy_mood"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="happyMood"
@@ -38,7 +42,7 @@
 
         <ImageView
             android:id="@+id/tired_mood"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="tiredMood"
@@ -47,7 +51,7 @@
 
         <ImageView
             android:id="@+id/crying_mood"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="cryingMood"
@@ -56,7 +60,7 @@
 
         <ImageView
             android:id="@+id/angry_mood"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="angryMood"
@@ -71,5 +75,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="addEntry"
-        android:text="submit" />
+        android:text="Submit" />
 </LinearLayout>

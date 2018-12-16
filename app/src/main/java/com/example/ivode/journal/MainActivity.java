@@ -10,6 +10,7 @@ import android.database.Cursor;
 
 import java.sql.Timestamp;
 
+/** Shows list of journal entries in the database. */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listViewEntry = findViewById(R.id.entryListView);
-        listViewEntry.setOnItemLongClickListener(new OnItemLongClickListener());
-        listViewEntry.setOnItemClickListener(new OnItemClickListener());
+        ListView entry_list = findViewById(R.id.entry_list);
+        entry_list.setOnItemLongClickListener(new OnItemLongClickListener());
+        entry_list.setOnItemClickListener(new OnItemClickListener());
 
         updateData();
     }
@@ -30,13 +31,11 @@ public class MainActivity extends AppCompatActivity {
         updateData();
     }
 
+    // update the activity based on last known data
     public void updateData() {
         EntryDatabase db = EntryDatabase.getInstance(getApplicationContext());
-        Cursor cursor = db.selectAll();
-
-        ListView listViewEntry = findViewById(R.id.entryListView);
-        EntryAdapter entryAdapter = new EntryAdapter(getApplicationContext(), cursor);
-        listViewEntry.setAdapter(entryAdapter);
+        ListView entry_list = findViewById(R.id.entry_list);
+        entry_list.setAdapter(new EntryAdapter(getApplicationContext(), db.selectAll()));
     }
 
 
@@ -45,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // on short click, show details of journal entry
     private class OnItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -57,11 +57,12 @@ public class MainActivity extends AppCompatActivity {
             Timestamp timestamp = Timestamp.valueOf(cursor.getString(cursor.getColumnIndex("timestamp")));
             JournalEntry entry = new JournalEntry(title, content, mood, timestamp);
 
-            intent.putExtra("entryJournal", entry);
+            intent.putExtra("journal_entry", entry);
             startActivity(intent);
         }
     }
 
+    // on long click, delete journal entry from database and update the activity
     private class OnItemLongClickListener implements AdapterView.OnItemLongClickListener {
         @Override
         public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {

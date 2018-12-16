@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/** Shows the details of a journal entry, including mood, content and timestamp accurate to seconds.*/
 public class DetailActivity extends AppCompatActivity {
 
     @Override
@@ -14,16 +15,16 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         Intent intent = getIntent();
-        JournalEntry entry = (JournalEntry) intent.getSerializableExtra("entryJournal");
+        JournalEntry entry = (JournalEntry) intent.getSerializableExtra("journal_entry");
 
-        TextView title = findViewById(R.id.journalTitle);
-        TextView timestamp = findViewById(R.id.journalTimestamp);
-        TextView entryText = findViewById(R.id.journalEntry);
-        ImageView moodImage = findViewById(R.id.journalMood);
+        TextView title = findViewById(R.id.journal_title);
+        TextView timestamp = findViewById(R.id.journal_time);
+        TextView content = findViewById(R.id.journal_description);
+        ImageView moodImage = findViewById(R.id.journal_mood);
 
         title.setText(entry.getTitle());
         timestamp.setText(entry.getTimestamp().toString().substring(0, 19));
-        entryText.setText(entry.getContent());
+        content.setText(entry.getContent());
         Mood mood = entry.getMood();
         moodImage.setImageResource(mood.getMoodImage());
     }
