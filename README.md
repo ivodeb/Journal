@@ -5,7 +5,7 @@ Extra features:
 
 ## Screenshots
 
-Journal entry list     | Journal entry details        | Create a new entry
-:---------------------:|:----------------------------:|:----------------------------:
-![1](Journal1.jpg)     | ![2](Journal2.jpg)           | ![3](Journal3.jpg)
+Journal entry list         | Journal entry details            | Create a new entry
+:-------------------------:|:--------------------------------:|:----------------------------:
+![1](doc/Journal1.jpg)     | ![2](doc/Journal2.jpg)           | ![3](doc/Journal3.jpg)
 
